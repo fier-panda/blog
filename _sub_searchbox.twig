@@ -1,0 +1,26 @@
+﻿<form method="get" action="/search" id="searchform" enctype="text/plain">
+	<ul class="searchbox">
+		<li id="searchbar">
+			<input type="text" name="search" value="{{ app.request.get('search') }}" placeholder="Mot clé ..." >					
+			<div class="button"><input type="submit" class="search-img" value=""></div>
+		</li>
+	</ul>
+</form>
+
+<!--
+<script type="text/javascript">
+
+    $('#searchbar :input[name="submit"]').bind('click', function () {
+        var link = "/search/" + encodeURI($('input[name="searchterms"]').val());
+        location.href = link;
+    });
+
+    $('#searchbar input[name="searchterms"]').keyup(function (e) {
+        if (e.keyCode == 13) {
+            var link = "/search/" + encodeURI($('input[name="searchterms"]').val());
+            location.href = link;
+        }
+    });
+
+</script>
+-->

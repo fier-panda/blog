@@ -1,0 +1,73 @@
+{% extends "layout.twig" %} 
+
+{% block class_content_header %}container-content{% endblock %}
+{% block class_content %}container-content{% endblock %}
+
+{% block ogimage %}<meta property="og:image" content="http://www.fier-panda.fr/theme/fier-panda/images/oeil-de-moscouille.jpg" />{% endblock %}
+{% block ogtitle %}<meta property="og:title" content="L'œil de Moscouille" />{% endblock %}
+{% block ogdescription %}<meta property="og:description" content="Notre sélection des meilleurs faits divers" />{% endblock %}
+{% block ogurl %}<meta property="og:url" content="http://151.80.149.97/oeildemoscouille" />{% endblock %}
+
+{% block content %}
+	
+	
+	
+    <div class="oeil-de-moscouille">
+
+    	<div class="container">
+
+    		<h1 class="main-title">
+    			
+    			L'œil de Moscouille
+
+    		</h1>
+
+    		<h2 class="sub-title">
+    			
+    			Notre sélection des meilleurs faits divers
+
+    		</h2>
+
+    		<div class="content">
+		        {% set oeildemoscouille = records|first %}
+		        {% set index = 0 %}
+		        {% for oeildemoscouille in records %}
+		            {% set index = index + 1 %}
+		            	
+					<article class="moscouille">
+
+		        		{% if oeildemoscouille.image_listing!="" %}
+
+							<a href="{{ oeildemoscouille.lien }}" target="_blank" title="{{ oeildemoscouille.title }}">
+								<figure class="article-img-container">
+									<img class="article-img nicolator" src="{{ oeildemoscouille.image_listing }}" alt="{{ oeildemoscouille.title }}" width="1250" height="400" />
+								</figure>
+							</a>
+
+						{% endif %}
+
+						<div class="source">
+							
+							Source : {{ oeildemoscouille.source }}
+
+						</div>
+
+						<header>
+		        		
+			        		<h1 class="article-title tac">
+			        			<a href="{{ oeildemoscouille.lien }}" target="_blank" title="{{ oeildemoscouille.title }}">
+			        				{{ oeildemoscouille.title }}
+								</a>
+			        		</h1>
+
+		        		</header>
+
+		        	</article>
+					
+					
+		        {% endfor %}
+	        </div>
+	    </div>
+
+    </div>
+{% endblock %}

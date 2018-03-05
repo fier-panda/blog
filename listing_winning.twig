@@ -1,0 +1,19 @@
+{% extends "layout.twig" %} 
+
+{% block content %}
+    <div class="fpbigoverview">
+        {% for article in records %}
+            <article>
+                <h2>
+                    <a href="{{ article.link }}" title="{{ article.title }}">
+                        {{ article.title }}
+                    </a>
+                </h2>
+                <p>{{ letterexcerpt(article.body|raw|striptags, '450', article.link) }}</p>
+                    <div class="separator">
+                        <i class="icon-ellipsis-horizontal"></i>
+                    </div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% setcontent top_articles = 'articles' where { categories: 'winning' } limit 5 %}
+{% for article in top_articles %}
+    <h4>
+        <a href="{{ article.link }}" title="{{ article.title }}">
+            <i class="icon-double-angle-right"></i> {{ article.title }}
+        </a>
+    </h4>
+    <hr/>
+{% endfor %}
