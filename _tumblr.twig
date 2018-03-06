@@ -1,0 +1,53 @@
+{% extends "layout.twig" %} 
+
+{% block title %}Coucou Internet{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="//desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.1/masonry.pkgd.js"></script>
+    <script type="text/javascript" src="/theme/fier-panda/js/infinitescroll.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="/theme/fier-panda/css/fancybox.css" media="screen" />
+{% endblock %}
+
+{% block javascript_bottom %}
+<script type="text/javascript">
+    $(function(){
+        var $container = $('#container_tumblr').css({ opacity: 0 }); 
+        $container.imagesLoaded(function(){ 
+            $(".post_from_tumblr a").fancybox({
+		'hideOnContentClick': true
+            });
+            $container.animate({ opacity: 1 }); 
+            $container.masonry({
+                itemSelector:'.post_from_tumblr',
+                columnWidth: 410
+            });
+        });
+        $container.infinitescroll({
+                navSelector:'.pagination-tumblr',
+                nextSelector:'.pagination-tumblr li a.pagination_nextlink',
+                itemSelector: '.load',
+                loading: {
+                    img:'http://static.tumblr.com/glziqhp/eRkls6pz6/white-90perc-opacity.png',
+                    donetext:''
+                }
+            },
+            function( newElements ) { 
+                var $newElems = $(newElements).css({opacity: 0});
+                $newElems.imagesLoaded(function(){
+                    $newElems.animate({ opacity: 1 });
+                    $container.masonry('appended', $newElems, true);
+                });
+            }
+        );
+    });
+</script>
+
+{% endblock %}    
+    
+{% block content %}
+	<h1>sdsd</h1>
+
+{% endblock %}

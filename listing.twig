@@ -1,0 +1,41 @@
+{% extends "layout.twig" %} 
+
+{% block class_content_header %}container-content{% endblock %}
+{% block class_content %}container-content{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% set article = records|first %}
+        {% set index = 0 %}
+        {% for article in records %}
+            {% set index = index + 1 %}
+            	
+			<article class="article">
+
+        		<header>
+        		
+	        		<h1 class="article-title tac">
+	        			<a href="{{ article.link }}" title="{{ article.title }}">
+	        				{{ article.title }}
+						</a>
+	        		</h1>
+
+        		</header>
+
+        		{% if article.image_listing!="" %}
+
+					<a href="{{ article.link }}" title="{{ article.title }}">
+						<figure class="article-img-container">
+							<img class="article-img nicolator" src="{{ article.image_listing }}" alt="{{ article.title }}" width="1250" height="400" />
+						</figure>
+					</a>
+
+				{% endif %}		
+
+        	</article>
+			
+			
+        {% endfor %}
+        {{ pager() }}
+    </div>
+{% endblock %}

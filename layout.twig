@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- TradeDoubler site verification 2397230 -->
+        <meta name="ero_verify" content="b0b5689c4109f3c7e9c167f1ec1a357e" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+        <title>{% block title %}Fier Panda{% endblock %}</title>
+		
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic%7CRoboto:400,700%7CDroid+Serif" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+		<link href="/theme/fier-panda/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="/theme/fier-panda/css/style.css" rel="stylesheet" type="text/css">
+        <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script><![endif]-->
+        {% block css %}{% endblock %}
+		
+        {% block javascript %}{% endblock %}
+        <meta name="description" content="{% block description %}Vous cultiver et vous divertir tout en vous permettant d'admirer la beauté des Internets : telle est notre mission.{% endblock %}"/>
+    	{% block ogimage %}{% endblock %}
+    	{% block ogtitle %}{% endblock %}
+    	{% block ogdescription %}{% endblock %}
+    	{% block ogurl %}{% endblock %}
+        {% block twittercard %}{% endblock %}
+    </head>
+    <body>   
+        <form method="get" action="/search" id="site-searchform" name="searchterms" enctype="text/plain" class="search-form js-search-form">
+            <div class="wrapper flex flex-justify flex-center">
+                <input type="search" name="search" autocomplete="off" placeholder="Mot clé ..."  value="{{ app.request.get('search') }}">
+                <input type="submit" class="submit-form" value="&#xf002;">
+                <div class="close js-close-form"></div>
+            </div>
+
+        </form>
+    	
+        <div class="navbar" role="banner">  
+			{{ menu('main', '_sub_menu.twig') }}
+        </div>
+		
+        <main role="main">
+            {% block content %}
+                default
+            {% endblock %}
+        </main>
+		
+        {% include '_footer.twig' %}
+
+        <div class="konami-js lightbox">
+            
+            <div class="lightbox-mask"></div>
+            <div class="lightbox-content">
+                
+                <div class="close"></div>
+                <img src="/theme/fier-panda/images/konami.gif" alt="konami">
+
+            </div>
+
+        </div>
+        
+        <div class="mask js-mask"></div>
+        <script src="/theme/fier-panda/js/konami.js"></script>
+		<script src="/theme/fier-panda/js/main.js"></script>
+    </body>
+</html>

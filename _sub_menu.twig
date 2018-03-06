@@ -1,0 +1,54 @@
+<div class="wrapper flex flex-center flex-justify">
+
+	<header class="site-title">
+		<a href="/"><img src="/theme/fier-panda/images/logo.gif" alt="Fier Panda" class='header-logo' height="104" width="113"></a>
+		<h1 class="dn">Fier Panda</h1>
+	</header>
+
+	<div class="mobile-menu js-menu-open">
+		
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+
+	</div>
+
+	<nav class="navigation js-mobile-menu">
+		<ul class="flex">
+			{% for item in menu %}
+				<li class="{% if item|current %}current-menu-item{% endif %}">
+					<a href="{{ item.link }}" {% if item.title is defined %}title='{{ item.title|escape }}'{% endif %}
+					   class="{% if item.class is defined %}{{item.class}}{% endif %} ">
+						{{item.label}}
+					</a>
+				</li>
+			{% endfor %}
+			<li>
+				<a href="#">Capharnaüm</a>
+				<ul class="submenu">
+					<li><a href="http://www.fier-panda.fr/coucou-internet">Coucou Internet</a></li>
+					<li><a href="http://www.fier-panda.fr/macron-barbier-logan/">Emmanuel Macron, Maxime Barbier ou Gregory Logan ?</a></li>
+					<li><a href="http://www.fier-panda.fr/macronbot/">Macronboat</a></li>
+					<li><a href="http://www.fier-panda.fr/jeu-du-fn/">Le jeu du FN</a></li>
+					<li><a href="http://www.fier-panda.fr/trump-h2l/">Trump ou Henry De Lesquen</a></li>
+					<li><a href="http://www.fier-panda.fr/pnl-forum-ados/">PNL ou forum-ado</a></li>
+					<li><a href="http://www.fier-panda.fr/le-point-generator/">Le Point generator</a></li>
+					<li><a href="http://www.fier-panda.fr/la-deglingue/">La déglingue</a></li>
+					<li><a href="http://www.fier-panda.fr/boobsroulette">Boobs roulette</a></li>
+					<li><a href="http://www.fier-panda.fr/cuteroulette">Cute roulette</a></li>
+					<li><a href="http://www.fier-panda.fr/quel-connard-es-tu/">Quel connard es-tu</a></li>
+					<li><a href="http://www.fier-panda.fr/boobs2048/">Boobs 2048</a></li>
+				</ul>
+			</li>
+
+			<li><a href="https://www.facebook.com/fierpanda" class="social-link" target="_blank"><i class="fa fa-facebook"></i></a></li>
+
+			<li><a href="https://twitter.com/fierpanda" class="social-link" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+			<li class="menu-item-search js-menu-item-search">
+				<i class="fa fa-search"></i>
+			</li>
+		</ul>
+	</nav>
+	
+</div>

@@ -1,0 +1,111 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+	Fier Panda - {{ record.title|striptags }}.
+{% endblock %}
+
+{% block description %}
+	{{ article.body|excerpt|striptags }}
+{% endblock %}
+
+{% block ogimage %}
+	<meta property="og:image" content="{{ record.image_listing }}" />
+{% endblock %}
+
+{% block ogtitle %}
+	<meta property="og:title" content="{{ record.title|striptags }}" />
+{% endblock %}
+
+
+{% block ogurl %}
+	<meta property="og:url" content="{{ record.link }}" />
+{% endblock %}
+
+{% block twittercard %}
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@fierpanda" />
+	<meta name="twitter:title" content="{{ record.title|striptags }}" />
+	<meta name="twitter:description" content="{{ article.body|excerpt|striptags }}" />
+	<meta name="twitter:image" content="{{ record.image_listing }}" />
+{% endblock %}
+
+{% block class_content_header %}container-content{% endblock %}
+{% block class_content %}container-content{% endblock %}
+
+{% block content %}
+
+	<div class="wrapper single-article">
+
+		<h1 class="single-title tac">{{ record.title|nl2br }}</h1>
+
+		<figure class="featured-image">
+
+			<img src="{{ record.image_listing }}" alt="{{ record.title }}"/>
+
+		</figure>
+
+		<div class="single-content">
+
+				<div class="single-meta flex flex-justify flex-center">
+
+					{% set recdate = record.datepublish|date("d/m/Y")|title %}
+					<p class="single-info">
+						Publié le <time datetime='{{record.datepublish|date("Y-m-d")}}'>{{recdate}}</time> par <span class="author">{{article.user.displayname}}</span>
+					</p>
+					<div class="single-share">
+						
+						<a href="https://www.facebook.com/fierpanda" class="social-link"><i class="fa fa-facebook"></i></a>
+						<a href="https://twitter.com/fierpanda" class="social-link"><i class="fa fa-twitter"></i></a>
+
+					</div>
+
+				</div>
+
+				<div class="content">
+					
+					{{ record.body }}
+
+				</div>
+
+		</div>
+
+	</div>
+
+	{% set similar_author = record.similarAuthor() %}
+	{% if similar_author is not empty %}
+
+		<div class="more-article">
+
+			<h5 class="title-more">{{ __('Similar Author') }}</h5>
+
+			{% for similar in similar_author %}
+
+				<article class="similar-article">
+
+	        		<header>
+	        		
+		        		<h1 class="article-title tac">
+		        			<a href="{{ similar.link }}" title="{{ similar.title }}">
+		        				{{ similar.title }}
+							</a>
+		        		</h1>
+
+	        		</header>
+
+	        		{% if similar.image_listing!="" %}
+
+						<a href="{{ similar.link }}" title="{{ similar.title }}">
+							<figure class="article-img-container">
+								<img class="article-img nicolator" src="{{ similar.image_listing }}" alt="{{ similar.title }}" width="1250" height="400" />
+							</figure>
+						</a>
+
+					{% endif %}	
+
+	        	</article>
+			{%  endfor %}
+			
+		</div>
+
+	{% endif %}
+{% endblock %}
